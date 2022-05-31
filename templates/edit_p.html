@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+  {% block body %}
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card card-body">
+      <form action="/update/{{p_edi.0}}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <input type="text" name="nombre" value="{{p_edi.1}}" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="descripcion" value="{{p_edi.2}}" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="año" value="{{p_edi.3}}" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="genero" value="{{p_edi.4}}" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="duracion" value="{{p_edi.5}}" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="idiomas" value="{{p_edi.6}}" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="link" value="{{p_edi.8}}" class="form-control">
+        </div>
+        <input type="file" name="img" class="form-control" autocomplete="off" required>
+            
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+              Save
+          </button>
+          </div>
+    </form>
+  </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-body">
+        <img src="../static/{{p_edi.7}}" alt="Portada anterior">
+    </div>
+  </div>
+  </div>
+{% endblock %}

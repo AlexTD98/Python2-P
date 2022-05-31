@@ -1,0 +1,37 @@
+{% extends 'layoutU.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <center> <iframe width="690" height="445" src="{{p_mo.8}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+            <div class="card text-left">
+                
+              <center><h1>{{p_mo.1}}</h1></center>
+                
+                  <div class="form-group">
+                    <p  class="form-control">{{p_mo.2}}</p>
+                  </div>
+                  <div class="form-group">
+                    <p class="form-control">{{p_mo.3}}</p>
+                  </div>
+                  <div class="form-group">
+                    <p class="form-control">{{p_mo.4}}</p>
+                  </div>
+                  <div class="form-group">
+                    <p class="form-control">{{p_mo.5}}</p>
+                  </div>
+                  <div class="form-group">
+                    <p class="form-control">{{p_mo.6}}</p>
+                  </div>
+              </form>
+            </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card card-body">
+                  <img width="240" height="400" src="../static/{{p_mo.7}}" alt="Portada anterior">
+              </div>
+            </div>
+          </div>
+</div>
+{% endblock %}

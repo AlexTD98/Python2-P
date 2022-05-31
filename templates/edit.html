@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+  {% block body %}
+  
+    <div class="container">
+        <div class="row">
+            {% for pelicula in peliculas %}
+            <div class="col-md-3">
+                
+                <div class="card text-left">
+                  <img class="card-img-top" src="../static/{{pelicula.7}}">
+                  <div class="card-body">
+                    <h4 class="card-title">{{pelicula.1}}</h4>
+                    <p class="card-text" ><i class="fa fa-align-justify" aria-hidden="true">{{pelicula.2}}</i> <br>
+                        </br>
+                        Año: {{pelicula.3}}<br>
+                        Genero: {{pelicula.4}}<br>
+                        Duracion: {{pelicula.5}}<br>
+                        Idiomas: {{pelicula.6}}<br>
+                        <td>
+                          <a href="/edit/{{pelicula.0}}" class="btn btn-success">Edit</a>
+                          <a href="/delete/{{pelicula.0}}" class="btn btn-primary">Delete</a>
+                        </td>
+                    </p>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endblock %}

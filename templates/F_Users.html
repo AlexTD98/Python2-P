@@ -1,0 +1,33 @@
+{% extends 'layoutU.html' %}
+
+  {% block body %}
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card card-body">
+      <form action="/recibir" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <h3>Llena el Test para convertirte en Admin</h3>
+          <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="email" name="correo" placeholder="Correo" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="usuario" placeholder="Usuario" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="text" name="contenido" placeholder="Contenido que puede subir (peliculas o series)" class="form-control">
+        </div>
+        
+            
+          
+        <button type="submit" class="btn btn-primary">
+            Enviar
+        </button>
+    
+    </form>
+  </div>
+    </div>
+  </div>
+
+{% endblock %}

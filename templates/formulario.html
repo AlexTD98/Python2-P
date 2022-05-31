@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<!--recuperar usuario-->
+    <h1>Inicio de sesion para administrador y usuario</h1>
+    <p>Para ingresar a tu cuenta favor de llenar este formulario<br>
+
+        <form>
+            <main action="/ enviar-respuesta">
+
+            <label for="user">Usuario:</label>
+                <br><input type="text" name="username" id="user"  placeholder="escribe tu nombre de usuario" autofocus required><br>
+
+            <label for="email">Email:</label>
+                <br><input type="email" name="email_control" placeholder="escribe tu correo" required><br>
+                
+            <label for="pass">Password:</label>    
+                <br><input type="password" name="password" id="pass" placeholder="escribe tu cotrasena"   pattern="[A-Za-z0-9]" title="Una contraseña debe contener letras y numeros" required><br>
+
+        
+            <br><button type="submit">Enviar</button>
+            <!--<input type="button" value="Crear Usuario" onclick="verificarPassword()">-->
+            
+            <script src="#"></script> <!--js/password.js-->
+            </main>
+        </form>
+
+        <footer><!--Usadas para definir el pie de página-->
+            <p>Desarrollo web Copyright &copy; 2022</p>
+        </footer>
+
+</body>
+</html>
