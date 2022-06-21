@@ -1,14 +1,15 @@
 {% extends 'layout.html' %}
 
   {% block body %}
-  
+  <link rel="stylesheet" href="../static/css/style2.css">
+  <link rel="JavaScript" href="./video.js">
     <div class="container">
         <div class="row">
             {% for pelicula in peliculas %}
             <div class="col-md-3">
                 
-                <div class="card text-left">
-                  <a href="Movie/{{pelicula.0}}"><img class="card-img-top" src="../static/{{pelicula.7}}"></a>
+                <div class="card">
+                  <a href="Movie/{{pelicula.0}}"><img class="card-img-top" src="../static/{{pelicula.7}}"><iframe src="{{pelicula.8}}?mute=1&autoplay=1"></iframe></a>
                   <div class="card-body">
                     <h4 class="card-title">{{pelicula.1}}</h4>
                     <p class="card-text" ><i class="fa fa-align-justify" aria-hidden="true">{{pelicula.2}}</i> <br>

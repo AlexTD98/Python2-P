@@ -1,0 +1,23 @@
+body{
+    padding: auto;
+    align-items: center;
+    height: 100vh;
+}
+
+.card{
+    height: 250px;
+    width: 300px;
+    overflow: hidden;
+    margin: auto;
+    padding: 10px,30px;
+    border-radius: 2%;
+    border: 1px solid #fff;
+    transition: all .4s ease-in-out;
+    background: linear-gradient(-135deg,#CE3682,#37AFDD);
+}
+.card:hover{
+    height: auto;
+    width: auto;
+    
+}
+
