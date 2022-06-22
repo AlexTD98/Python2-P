@@ -6,13 +6,12 @@ import os
 from flask_mysqldb import MySQL
 import bcrypt
 from werkzeug.utils import secure_filename
-from flask_login import login_required
 
 
 app = Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']='alejandro'
+app.config['MYSQL_PASSWORD']='Alberto123'
 app.config['MYSQL_DB']='pythonp'
 app.config['UPLOAD_FOLDER'] = './static'
 mysql = MySQL(app)
@@ -29,7 +28,6 @@ def Index():
         return render_template('sesion.html')
 
 @app.route('/Inicio',methods=['GET','POST'])
-@login_required
 def Inicio():
     if request.method == 'POST':
         nombre = request.form['keyword']
@@ -45,7 +43,6 @@ def Inicio():
         return render_template('inicio.html',peliculas=data)
     
 @app.route('/inicio',methods=['GET','POST'])
-@login_required
 def inicio():
     if request.method == 'POST':
         nombre = request.form['keyword']
@@ -61,7 +58,6 @@ def inicio():
         return render_template('inicioU.html',peliculas=data)
 
 @app.route('/INICIO',methods=['GET','POST'])
-@login_required
 def INICIO():
     if request.method == 'POST':
         nombre = request.form['keyword']
