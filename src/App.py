@@ -6,13 +6,13 @@ import os
 from flask_mysqldb import MySQL
 import bcrypt
 from werkzeug.utils import secure_filename
-
+from config import config
 
 app = Flask(__name__)
-app.config['MYSQL_HOST']='localhost'
+"""app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']='Alberto123'
-app.config['MYSQL_DB']='pythonp'
+app.config['MYSQL_DB']='pythonp'          """
 app.config['UPLOAD_FOLDER'] = './static'
 mysql = MySQL(app)
 
@@ -22,10 +22,7 @@ semilla = bcrypt.gensalt()
 
 @app.route('/', methods=['GET','POST'])
 def Index():
-    if request.method == 'POST':
-        return render_template('inicio.html')
-    else: 
-        return render_template('sesion.html')
+    return redirect(url_for('ingresar'))
 
 @app.route('/Inicio',methods=['GET','POST'])
 def Inicio():
@@ -79,7 +76,7 @@ def registrar():
         if 'nombre' in session:
             return render_template('inicio.html')
         else:
-            return render_template('sesion.html')
+            return render_template('/auth/sesion.html')
     else:
         # Obtiene los datos de registro
         nombre = request.form['name']
@@ -116,12 +113,13 @@ def registrar():
     
 @app.route("/ingresar", methods=["GET", "POST"])
 def ingresar():
+
     if (request.method=="GET"):
         # Acceso denegado
         if 'nombre' in session:
             return render_template('inicio.html')
         else:
-            return render_template('sesion.html')
+            return render_template('/auth/sesion.html')
     else:
         # Obtiene los datos de registro
         nombre = request.form['name']
@@ -168,7 +166,7 @@ def ingresar():
                 flash("El Password Es Incorrecto", "alert-warning")
 
                 # Redirigir a Ingresar
-                return render_template('sesion.html')
+                return render_template('/auth/sesion.html')
         else:
             # Advertencia o Mensaje Flash
             flash("El Correo No Existe", "alert-warning")
@@ -282,4 +280,5 @@ def test():
     return render_template('F_Users.html')
 
 if __name__ == '__main__':
-    app.run(port = 3000,debug = True)
+    app.config.from_object(config['development'])
+    app.run(port = 3000)
