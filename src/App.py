@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']='Alberto123'
 app.config['MYSQL_DB']='pythonp'          """
-app.config['UPLOAD_FOLDER'] = './static'
+app.config['UPLOAD_FOLDER'] = './src/static'
 mysql = MySQL(app)
 
 app.secret_key = 'mysecretkey'
@@ -154,7 +154,7 @@ def ingresar():
                 # Registrar la sesión
                 session['name'] = usuario[2]
                 
-                # Redirecciona a Index
+                # Redirecciona a Inicio
                 if (usuario[3]==3):
                     return redirect(url_for('Inicio'))
                 elif (usuario[3]==1):
@@ -191,12 +191,12 @@ def recivir():
         vid = request.form['link']
         filename = secure_filename(portada.filename)
         portada.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-        cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO pelis (Nombre,Descripcion,Año,Genero,Duracion,Idiomas,Img,Link) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',
+        cursor = mysql.connection.cursor()
+        cursor.execute('INSERT INTO pelis (Nombre,Descripcion,Año,Genero,Duracion,Idiomas,Img,Link) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)',
                     (nombre,descripcion,año,genero,duracion,idiomas,filename,vid))
         mysql.connection.commit()
         flash('Pelicula agregada correctamente')
-        return redirect(url_for('inicio'))
+        return redirect(url_for('Inicio'))
     
 
 @app.route('/Movie/<id>')
@@ -255,14 +255,14 @@ def update(id):
         WHERE idPelis = %s
                     """,(Nombre,Descripcion,Año,Genero,Duracion,Idiomas,filename,vid,id))
         mysql.connection.commit()
-        return redirect(url_for('inicio'))
+        return redirect(url_for('Inicio'))
 
 @app.route('/delete/<string:id>')
 def delete(id):
     cur = mysql.connection.cursor()
     cur.execute('DELETE FROM pelis WHERE idPelis= {0}'.format(id))
     mysql.connection.commit()
-    return redirect(url_for('inicio'))
+    return redirect(url_for('Inicio'))
 
 @app.route('/exit')
 def exit():
@@ -271,9 +271,9 @@ def exit():
 @app.route('/users')
 def user():
     cur = mysql.connection.cursor()
-    cur.execute('select name,email,rol from users us inner join roles rol on us.rol_id = rol.id where rol.id != 3')
+    cur.execute('SELECT name, email, rol FROM users us inner join roles rol on us.rol_id = rol.id WHERE rol.id != 3')
     data = cur.fetchall()
-    return render_template("users.html",users=data)
+    return render_template("users.html", users=data)
 
 @app.route('/test')
 def test():
